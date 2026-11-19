@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin · Noir Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+  <!-- Login -->
+  <section id="loginView" class="login" hidden>
+    <form id="loginForm" class="login-card card-box" novalidate>
+      <div class="brand" style="text-align:center;margin-bottom:6px">NOIR</div>
+      <p class="stock" style="text-align:center;margin:0 0 22px">Admin sign-in</p>
+      <div class="field"><label for="a_user">Username</label><input id="a_user" name="username" autocomplete="username" required maxlength="64"></div>
+      <div class="field"><label for="a_pass">Password</label><input id="a_pass" name="password" type="password" autocomplete="current-password" required maxlength="200"></div>
+      <div class="error" id="loginError" role="alert"></div>
+      <button class="btn block" type="submit">Sign in</button>
+    </form>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="appView" hidden>
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <span class="brand">NOIR</span><span class="stock">Admin</span>
+      </div>
+      <nav>
+        <button class="icon-btn" id="bell" type="button" aria-label="New order alerts" title="New order alerts">🔔<span class="count-dot" id="bellDot" hidden></span></button>
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">◐</button>
+        <button class="btn ghost small" id="logoutBtn" type="button">Log out</button>
+      </nav>
+    </header>
+
+    <div class="admin-wrap">
+      <nav class="tabs" role="tablist">
+        <button class="tab on" data-tab="overview" type="button">Overview</button>
+        <button class="tab" data-tab="orders" type="button">Orders <span class="tab-count" id="tabOrdersCount" hidden></span></button>
+        <button class="tab" data-tab="products" type="button">Products</button>
+        <button class="tab" data-tab="banners" type="button">Banners</button>
+      </nav>
+
+      <div id="tab-overview" class="pane">
+        <div class="stats" id="stats"></div>
+      </div>
+
+      <div id="tab-orders" class="pane" hidden>
+        <div class="toolbar">
+          <div class="chips" id="statusFilter"></div>
+          <button class="btn ghost small" id="refreshOrders" type="button">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data" id="ordersTable">
+            <thead><tr>
+              <th>Order</th><th>Placed</th><th>Customer</th><th>Mobile</th><th>Delivery address</th>
+              <th>Product</th><th>Qty</th><th>Total</th><th>Status</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="tab-products" class="pane" hidden>
+        <div class="toolbar">
+          <h2>Products</h2>
+          <button class="btn small" id="newProduct" type="button">+ Add product</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data" id="productsTable">
+            <thead><tr><th>Image</th><th>Name</th><th>Price</th><th>Offer</th><th>Stock</th><th>Featured</th><th>Visible</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="tab-banners" class="pane" hidden>
+        <div class="toolbar">
+          <h2>Promotional banners</h2>
+          <button class="btn small" id="newBanner" type="button">+ Add banner</button>
+        </div>
+        <div class="banner-list" id="bannerList"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="modal" class="modal" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+      <button class="close" id="modalClose" type="button" aria-label="Close">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script src="/admin.js"></script>
+</body>
+</html>

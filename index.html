@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noir Store — Premium Essentials</title>
+  <meta name="description" content="Premium essentials with fast delivery across India.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="#/" class="brand">NOIR</a>
+    <nav>
+      <a href="#/track">Track order</a>
+      <button id="themeBtn" class="icon-btn" type="button" aria-label="Switch theme">◐</button>
+    </nav>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="foot">© <span id="year"></span> Noir Store · Secure checkout · Your details are used only to deliver your order</footer>
+
+  <div id="modal" class="modal" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" id="modalClose" type="button" aria-label="Close">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script src="/app.js"></script>
+</body>
+</html>
